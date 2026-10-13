@@ -1,0 +1,323 @@
+WEBVTT
+
+00:00.000 --> 00:05.600
+In 2003, sequencing the first human genome took 13 years. It cost three billion dollars.
+
+00:06.240 --> 00:11.120
+Today, the same job takes a day costs about a thousand dollars. We've gotten extremely good
+
+00:11.120 --> 00:16.800
+at producing biological data. Billions of new sequences a year. The bottleneck isn't generating
+
+00:16.800 --> 00:22.400
+it anymore. It's making sense of it. The most fundamental question you can ask of a biological
+
+00:22.400 --> 00:28.880
+sequence is, have we seen something like this before? That's sequence alignment. Given two
+
+00:28.880 --> 00:34.320
+sequences, line up their characters to maximize matches, allowing for gaps where mutations have
+
+00:34.320 --> 00:41.040
+occurred. The score tells you how related they are. Do this against an entire database and you can
+
+00:41.040 --> 00:46.640
+identify a genes function, find evolutionary relatives or even predict a 3D structure.
+
+00:47.520 --> 00:53.280
+There are two main flavors of sequence alignment. Global alignment, using the Needleman-Wunsch
+
+00:53.280 --> 00:58.720
+algorithm, align sequences end to end. This is useful when you expect both sequences to be
+
+00:58.720 --> 01:04.800
+similar throughout. Local alignment, on the other hand, using the Smith-Waterman algorithm,
+
+01:05.440 --> 01:10.720
+finds the best matching sub-region. This is what you typically want for protein search,
+
+01:11.280 --> 01:15.440
+as a query might share just one functional domain with an otherwise unrelated protein.
+
+01:16.240 --> 01:22.160
+Both algorithms use dynamic programming. They fill an end-by-end table where every cell is the best
+
+01:22.160 --> 01:28.880
+score achievable so far. Each cell depends on its three neighbors, left, above and diagonal.
+
+01:29.840 --> 01:35.440
+The optimal global alignment is the score at the bottom right of the table. The best local alignment
+
+01:35.440 --> 01:41.840
+is the highest score in any cell. For protein specifically, not all amino acid swaps are equal.
+
+01:41.840 --> 01:49.520
+Substituting a hydrophobic residue for a similar one is far less destructive than swapping it for a charged one.
+
+01:50.720 --> 02:00.160
+So instead of a plus or minus one, we use BLOSUM62, a 24 by 24 substitution matrix derived from real evolutionary data.
+
+02:00.160 --> 02:07.200
+We also use affine gap penalties, a high cost to open a gap, but a lower cost to extend it.
+
+02:08.160 --> 02:13.680
+This accurately reflects biology, where single long insertions or deletions are much more common
+
+02:13.680 --> 02:20.880
+than multiple scattered ones. We can implement these algorithms in C++. Running one query against Swiss-Prot,
+
+02:20.880 --> 02:26.880
+a database of half a million proteins, the CPU manages about 0.3 giga cell updates per second.
+
+02:26.880 --> 02:34.320
+For TrEMBL, which is a database composed of 200 million sequences, that's days per query.
+
+02:35.280 --> 02:42.240
+The standard tool, BLAST, gets around this by using heuristics, but it sacrifices the optimality guarantee.
+
+02:43.520 --> 02:51.680
+We still want exact answers, just a lot faster. GPUs are built exactly for this kind of parallel workload.
+
+02:51.680 --> 02:58.320
+A modern NVIDIA GPU is made up of thousands of CUDA cores, grouped into streaming multiprocessors,
+
+02:58.960 --> 03:06.240
+each executing groups of 32 threads called warps. All threads within a warp execute the same instruction
+
+03:06.240 --> 03:13.280
+simultaneously, but on different data. The function executed by each thread is called a kernel.
+
+03:14.080 --> 03:18.240
+When a kernel is launched, these threads are organized into a grid of thread blocks.
+
+03:18.240 --> 03:25.280
+At the hardware level, each block is assigned a streaming multiprocessor and executes independently.
+
+03:27.120 --> 03:33.920
+GPUs have several distinct memory spaces, each with different capacity, latency and scope characteristics.
+
+03:35.680 --> 03:38.240
+Registers are the fastest and are local to each thread.
+
+03:38.240 --> 03:45.040
+Shared memory is small, has very low latency, and is accessible by all threads in a block.
+
+03:46.640 --> 03:50.720
+Global memory is abundant, visible to everyone, but very slow.
+
+03:51.840 --> 03:55.200
+Constant memory is also visible by all threads, but is read-only.
+
+03:56.480 --> 04:01.440
+The simplest way to parallelize these algorithms is by assigning one thread per alignment.
+
+04:02.240 --> 04:06.400
+Each thread takes one database sequence and fills its own dynamic programming table.
+
+04:07.200 --> 04:13.200
+If we run this on a graphics card with 2300 CUDA cores, throughput doubles.
+
+04:14.640 --> 04:17.840
+That's it. That's probably lower than you might have expected.
+
+04:18.480 --> 04:20.000
+There are three main reasons for this.
+
+04:20.880 --> 04:24.240
+Number one, memory access is not coalesced.
+
+04:24.240 --> 04:29.600
+Adjacent threads in a warp grab residues from completely different regions of memory,
+
+04:30.320 --> 04:33.920
+so a single warp load fragments into 32 separate transactions.
+
+04:35.840 --> 04:39.680
+Number two, the full DP matrix is in global memory.
+
+04:40.320 --> 04:47.280
+The third reason, BLOSUM62 is in constant memory, which is great when threads read the same address,
+
+04:47.280 --> 04:48.720
+but here, they don't.
+
+04:49.760 --> 04:51.520
+Every thread looks at a different residue.
+
+04:52.160 --> 04:55.120
+Four improvements can drastically increase performance.
+
+04:55.120 --> 04:59.600
+Instead of storing the database as a flat array, where each sequence is packed side by side,
+
+05:00.480 --> 05:04.400
+we can interleave the kth residue of 32 sequences side by side,
+
+05:05.280 --> 05:08.720
+so a warp's load becomes one coalesced transaction.
+
+05:09.600 --> 05:14.880
+Each cell only depends on the previous row, so we don't need to store the whole matrix in memory.
+
+05:15.760 --> 05:16.880
+We only need two rows.
+
+05:16.880 --> 05:23.680
+The memory used per sequence now drops from big O of M multiplied by N to big O of N.
+
+05:25.040 --> 05:28.000
+Instead of storing our substitution matrix in constant memory,
+
+05:28.640 --> 05:31.280
+we can load it into shared memory at the start of the kernel.
+
+05:32.080 --> 05:36.080
+After that point, every lookup hits ultra-fast on-chip cache.
+
+05:37.120 --> 05:41.360
+Almost every Swiss-Prot alignment fits comfortably in a signed 16-bit range.
+
+05:41.360 --> 05:49.120
+We can use 16-bit integers and flag all the overflows on the fly, and re-compute these rare offenders with 32-bit integers instead.
+
+05:49.120 --> 05:54.960
+Once we combine these, along with a few other techniques, our kernel is nearly 10 times faster
+
+05:54.960 --> 06:00.240
+in the naive implementation. Around 9 giga-cell updates per second for Smith-Waterman.
+
+06:01.040 --> 06:03.120
+That's 30 times faster than the CPU.
+
+06:03.680 --> 06:10.480
+But on a uniform-length synthetic database, the exact same kernel hits 15.5 giga-cell updates per second.
+
+06:11.360 --> 06:13.360
+On real Swiss-Prot, only 9.
+
+06:14.400 --> 06:15.680
+That's a 40% drop.
+
+06:15.680 --> 06:20.000
+The culprit here is that not all sequences have the same length.
+
+06:21.440 --> 06:26.000
+Even after sorting, sequences within the 32-wide warp aren't identical.
+
+06:26.960 --> 06:32.160
+The longer sequence dictates how long every other lane has to wait, so some threads are masked out.
+
+06:32.720 --> 06:34.880
+For long sequences, we need a different strategy.
+
+06:35.760 --> 06:36.960
+Look at that recurrence again.
+
+06:37.840 --> 06:40.480
+Every cell on the same antidiagonal is independent,
+
+06:41.600 --> 06:44.400
+so we can compute the entire antidiagonal in parallel.
+
+06:45.680 --> 06:47.280
+This is called the wavefront strategy.
+
+06:48.000 --> 06:53.600
+We can break the matrix into tiles and dispatch one thread block per tile along the macro diagonals
+
+06:54.240 --> 06:55.680
+and synchronize between waves.
+
+06:57.280 --> 07:02.480
+Within each tile, we can fill the sub-matrix using the same wavefront strategy again,
+
+07:02.480 --> 07:03.520
+but on a thread level.
+
+07:04.480 --> 07:09.440
+Now, an entire grid of blocks can cooperate in one alignment, instead of just a single thread.
+
+07:10.240 --> 07:12.720
+If we plot both kernels against sequence length,
+
+07:12.720 --> 07:14.800
+inter wins for short sequences.
+
+07:16.080 --> 07:19.840
+There's a lot of short, independent alignments that can keep the GPU busy.
+
+07:20.560 --> 07:26.000
+However, intra wins for long sequences, where the wavefront is wide enough to occupy the SMs.
+
+07:26.880 --> 07:29.280
+They cross at around 1200 residues.
+
+07:30.400 --> 07:32.080
+Each is optimal in a different regime.
+
+07:32.640 --> 07:35.280
+To achieve the best performance, we need to use both.
+
+07:35.280 --> 07:38.000
+We pick a threshold, tau.
+
+07:38.560 --> 07:40.480
+Below it, route to inter.
+
+07:41.040 --> 07:42.800
+Above it, route to intra.
+
+07:43.680 --> 07:45.840
+The question is, what is tau?
+
+07:47.280 --> 07:52.000
+If we sweep it on Swiss-Prot, the optimum is around 8192.
+
+07:53.120 --> 07:56.880
+Around 0.1% of Swiss-Prot is longer than 8k residues.
+
+07:57.760 --> 08:00.160
+That tiny fraction is dragging the performance down.
+
+08:00.960 --> 08:03.280
+Reroute them, and the bottleneck vanishes.
+
+08:04.000 --> 08:04.640
+The summary?
+
+08:05.520 --> 08:11.360
+On Swiss-Prot, with a 464 residue query, the throughput and giga cell updates per second
+
+08:12.240 --> 08:17.200
+is 0.3 for the CPU baseline, 0.65 for the naive GPU,
+
+08:17.200 --> 08:24.000
+9 for the optimized inter alone, and 13.4 for the tuned hybrid.
+
+08:24.960 --> 08:29.040
+Averaged out across queries from 64 to 496 residues.
+
+08:29.600 --> 08:32.080
+That's a 38 times speedup over the CPU.
+
+08:33.200 --> 08:36.560
+And a 5.7 times speedup over single-threaded Parasail.
+
+08:37.600 --> 08:42.560
+A state-of-the-art, single-instruction, multiple-data CPU library for Needleman-Wunsch.
+
+08:43.760 --> 08:45.920
+All scores are verified against Parasail.
+
+08:46.800 --> 08:50.640
+What this project shows is that raw parallelism alone isn't enough.
+
+08:51.440 --> 08:55.520
+You need the right hardware, the right memory layout, and the right strategy.
+
+08:55.520 --> 08:57.440
+Thanks for watching.
+
+08:57.440 --> 08:58.960
+I hope you enjoyed it.
+

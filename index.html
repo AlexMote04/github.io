@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alex Mote · Robotics Engineer</title>
+  <meta name="description" content="Alex Mote: MSc Robotics student at the University of Manchester working on autonomy, computer vision and high-performance computing. Projects in CUDA, FPGA design, game AI and NLP.">
+  <meta name="theme-color" content="#080d17">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://alexmote04.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alex Mote · Robotics Engineer">
+  <meta property="og:description" content="MSc Robotics, University of Manchester. Autonomy, computer vision and high-performance computing.">
+  <meta property="og:url" content="https://alexmote04.github.io/">
+  <meta property="og:image" content="https://alexmote04.github.io/assets/img/og.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fira-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fira-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <canvas class="backdrop" aria-hidden="true"></canvas>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="alexmote04.github.io, back to top">
+        <svg class="brand__mark" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><circle class="brand__ring" cx="10" cy="10" r="4.5"/><path class="brand__cross" d="M10 1.5v4M10 14.5v4M1.5 10h4M14.5 10h4"/></svg>
+        <span class="brand__word" translate="no">alexmote04</span><span class="brand__tag" translate="no">.github.io</span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-btn__icon" aria-hidden="true"></span> Menu
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="https://github.com/AlexMote04" target="_blank" rel="noopener noreferrer">GitHub <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/alex-mote/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a></li>
+          <li><a class="site-nav__cta" href="cv/Alex-Mote-CV.pdf" target="_blank" rel="noopener">CV <span aria-hidden="true">↓</span><span class="visually-hidden"> (opens in new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <span id="top" class="anchor-top" aria-hidden="true"></span>
+
+    <!-- ========== Hero ========== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__intro">
+        <p class="hero__eyebrow"><span class="led led--pulse" aria-hidden="true"></span> MSc Robotics · The University of Manchester</p>
+        <h1 class="hero__name" id="hero-title">Alex Mote</h1>
+        <p class="hero__role">Robotics Engineer <span aria-hidden="true">|</span><span class="visually-hidden">,</span> Computer Scientist</p>
+        <p class="hero__lede">
+          I’m an MSc Robotics student and <a class="inline-link" href="#scholarship">Spärck AI Scholar</a> at the University of Manchester with a passion for
+          <strong>autonomous vehicles</strong>, <strong>computer vision</strong> and
+          <strong>high-performance computing</strong>. I want to combine practical engineering skills
+          with a strong theoretical computer science foundation to tackle some of the most challenging
+          problems in robotics.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">Explore Projects</a>
+          <a class="btn" href="cv/Alex-Mote-CV.pdf" target="_blank" rel="noopener">Download CV<span class="visually-hidden"> (opens in new tab)</span></a>
+        </div>
+      </div>
+
+      <figure class="cam pane">
+        <figcaption class="pane__bar" aria-hidden="true">
+          <span class="led led--pulse"></span>
+          <span class="legend">Camera</span>
+          <span class="cam__file" translate="no">CAM_01</span>
+          <span class="cam__status">Live</span>
+        </figcaption>
+        <div class="cam__screen">
+          <img src="assets/img/alex.webp" width="640" height="800" alt="Portrait of Alex Mote, smiling, in a white striped shirt" fetchpriority="high" decoding="async">
+          <span class="cam__corner cam__corner--tl" aria-hidden="true"></span>
+          <span class="cam__corner cam__corner--tr" aria-hidden="true"></span>
+          <span class="cam__corner cam__corner--bl" aria-hidden="true"></span>
+          <span class="cam__corner cam__corner--br" aria-hidden="true"></span>
+          <span class="cam__hud" aria-hidden="true">53.47°N 2.23°W</span>
+        </div>
+        <dl class="cam__readouts">
+          <div><dt>Based</dt><dd>Manchester, UK</dd></div>
+          <div><dt>Studying</dt><dd>MSc Robotics</dd></div>
+          <div><dt>Focus</dt><dd>Autonomy, HPC</dd></div>
+        </dl>
+      </figure>
+    </section>
+
+    <!-- ========== Spärck AI Scholarship ========== -->
+    <section class="award pane" id="scholarship" aria-labelledby="award-title">
+      <div class="pane__bar">
+        <span class="led" aria-hidden="true"></span>
+        <span class="legend">Scholarship</span>
+        <span class="award__year lcd">2026–27</span>
+      </div>
+      <div class="award__body">
+        <div class="award__text">
+          <h2 class="award__title" id="award-title">Spärck AI Scholarship</h2>
+          <p>A fully funded UK government scholarship from the Department for Science, Innovation and Technology (DSIT) for top AI talent, named after computing pioneer Karen Spärck Jones. I’m one of up to 10 scholars at the University of Manchester, in the programme’s first cohort.</p>
+          <div class="award__links">
+            <a class="btn btn--small" href="https://www.manchester.ac.uk/study/masters/fees-and-funding/masters-student-funding/sparck-ai-scholarship/" target="_blank" rel="noopener noreferrer">About the Scholarship <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a>
+            <a class="btn btn--small" href="https://www.gov.uk/government/news/top-talent-backed-with-masters-funding-as-britains-tech-experts-called-into-government" target="_blank" rel="noopener noreferrer">GOV.UK Announcement <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a>
+          </div>
+        </div>
+        <dl class="award__stats">
+          <div><dt>Scholars at Manchester</dt><dd class="lcd">≤&thinsp;10</dd></div>
+          <div><dt>Tuition &amp; stipend</dt><dd class="lcd">Fully funded</dd></div>
+          <div><dt>Cohort</dt><dd class="lcd">First, 2026</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ========== Overview: skills + about ========== -->
+    <div class="overview">
+      <section class="skills pane" aria-labelledby="skills-title">
+        <h2 class="pane__bar"><span class="legend" id="skills-title">Skills</span></h2>
+        <dl class="props">
+          <div class="props__row">
+            <dt>Languages</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip chip--lit">C++</li><li class="chip chip--lit">Python</li><li class="chip">Java</li><li class="chip">C</li><li class="chip">SystemVerilog</li><li class="chip">SQL (PostgreSQL)</li><li class="chip">JavaScript</li><li class="chip">Assembly</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>High-Performance Computing</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip chip--lit">CUDA</li><li class="chip chip--lit">GPU kernel optimisation</li><li class="chip">Coalesced memory access</li><li class="chip">Benchmarking</li><li class="chip">Caching</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>Hardware</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip">RTL design</li><li class="chip">FPGA synthesis</li><li class="chip">SoC integration</li><li class="chip">Testbench verification</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>AI &amp; Data</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip">Monte Carlo Tree Search</li><li class="chip">Transformers (FinBERT)</li><li class="chip">Embeddings</li><li class="chip">NLP pipelines</li><li class="chip">Machine learning</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>Robotics <span class="props__note">MSc</span></dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip chip--lit">ROS&nbsp;2</li><li class="chip">Kinematics</li><li class="chip">State estimation</li><li class="chip">PID control</li><li class="chip">Path planning</li><li class="chip">Computer vision</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>Tools</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip">Git</li><li class="chip">Linux/Bash</li><li class="chip">Docker</li><li class="chip">GitHub Actions</li><li class="chip">AWS</li>
+            </ul></dd>
+          </div>
+          <div class="props__row">
+            <dt>Professional</dt>
+            <dd><ul class="chips" role="list">
+              <li class="chip">Teamwork</li><li class="chip">Mentoring</li><li class="chip">Leadership</li>
+            </ul></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="about pane" aria-roledescription="carousel" aria-labelledby="about-title">
+        <h2 class="visually-hidden" id="about-title">About</h2>
+        <div class="pane__bar about__bar">
+          <div class="tabs" role="group" aria-label="About sections">
+            <button class="tab" type="button" aria-controls="slide-education" aria-current="true">Education</button>
+            <button class="tab" type="button" aria-controls="slide-objectives">Career Objectives</button>
+            <button class="tab" type="button" aria-controls="slide-interests">Research Interests</button>
+          </div>
+        </div>
+
+        <div class="about__track" tabindex="0" role="region" aria-label="About slides. Use the arrow keys to switch.">
+          <!-- Education -->
+          <div class="slide" id="slide-education" role="group" aria-roledescription="slide" aria-label="1 of 3: Education">
+            <h3 class="visually-hidden">Education</h3>
+            <ol class="timeline" role="list">
+              <li>
+                <div class="timeline__head">
+                  <h4>MSc Robotics</h4>
+                  <span class="lcd">2026–27</span>
+                </div>
+                <p class="timeline__where">The University of Manchester · <span class="status">In progress</span></p>
+                <p class="timeline__award"><a class="inline-link" href="#scholarship">Spärck AI Scholar</a>, fully funded by DSIT</p>
+                <p class="timeline__detail">Robotic Systems · Software for Robotics (ROS&nbsp;2) · Cognitive Robotics &amp; Computer Vision · Robotic Systems Design Project</p>
+              </li>
+              <li>
+                <div class="timeline__head">
+                  <h4>BSc (Hons) Computer Science</h4>
+                  <span class="lcd">2023–26</span>
+                </div>
+                <p class="timeline__where">The University of Manchester · <strong>First Class Honours (82%)</strong></p>
+                <p class="timeline__detail">Machine Learning · Algorithms &amp; Data Structures · Distributed Systems · System Architecture · SoC Design · IoT · Software Engineering</p>
+              </li>
+              <li>
+                <div class="timeline__head">
+                  <h4>A-Levels</h4>
+                  <span class="lcd">2016–23</span>
+                </div>
+                <p class="timeline__where">Bro Myrddin Welsh Comprehensive School, Carmarthen</p>
+                <p class="timeline__detail">Maths A* · Physics A* · Chemistry A* · Welsh Baccalaureate A · AS Further Maths A. Awarded the Bro Myrddin Award for the highest A-Level results in the cohort.</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Career objectives -->
+          <div class="slide" id="slide-objectives" role="group" aria-roledescription="slide" aria-label="2 of 3: Career Objectives">
+            <h3 class="visually-hidden">Career Objectives</h3>
+            <ul class="goals" role="list">
+              <li>
+                <span class="goals__index" aria-hidden="true">01</span>
+                <div>
+                  <h4>Autonomous vehicles</h4>
+                  <p>Build perception and planning software for self-driving vehicles that is safe, testable and fast enough to run in real time.</p>
+                </div>
+              </li>
+              <li>
+                <span class="goals__index" aria-hidden="true">02</span>
+                <div>
+                  <h4>Efficient AI on constrained hardware</h4>
+                  <p>Make AI models fit the compute, memory and power budgets of robots and embedded devices, from profiling and GPU kernels to custom accelerators.</p>
+                </div>
+              </li>
+              <li>
+                <span class="goals__index" aria-hidden="true">03</span>
+                <div>
+                  <h4>Bridge theory and practice</h4>
+                  <p>Work in teams where algorithms, software and hardware are designed together, rather than handed over the wall.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Research interests -->
+          <div class="slide" id="slide-interests" role="group" aria-roledescription="slide" aria-label="3 of 3: Research Interests">
+            <h3 class="visually-hidden">Research Interests</h3>
+            <ul class="goals" role="list">
+              <li>
+                <span class="goals__index" aria-hidden="true">01</span>
+                <div>
+                  <h4>Autonomy</h4>
+                  <p>Perception, state estimation and planning for robots operating in unstructured, changing environments.</p>
+                </div>
+              </li>
+              <li>
+                <span class="goals__index" aria-hidden="true">02</span>
+                <div>
+                  <h4>Vision-Language-Action models</h4>
+                  <p>Grounding vision and language in robot actions, and making these large models efficient enough for on-robot inference.</p>
+                </div>
+              </li>
+              <li>
+                <span class="goals__index" aria-hidden="true">03</span>
+                <div>
+                  <h4>Medical robotics</h4>
+                  <p>Precise, safety-critical autonomy in healthcare, building on my work in bioinformatics.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about__foot">
+          <button class="btn btn--small btn--icon" type="button" data-step="-1" aria-label="Previous section">←</button>
+          <span class="lcd about__pos" aria-hidden="true"><span data-pos>1</span>&thinsp;/&thinsp;3</span>
+          <button class="btn btn--small btn--icon" type="button" data-step="1" aria-label="Next section">→</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========== Projects ========== -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <header class="projects__head">
+        <h2 class="projects__title" id="projects-title">Projects</h2>
+        <p class="projects__meta">4 projects: GPU computing, machine learning and digital hardware</p>
+      </header>
+
+      <div class="projects__layout">
+        <nav class="index pane" aria-label="Project index">
+          <p class="pane__bar"><span class="legend">Index</span> <span class="index__count">4</span></p>
+          <ol class="index__list" role="list">
+            <li><a class="index__row" href="#protein-align"><span class="index__name">GPU Sequence Alignment</span><span class="index__sub">CUDA protein database search</span></a></li>
+            <li><a class="index__row" href="#riskdrift"><span class="index__name">RiskDrift</span><span class="index__sub">NLP risk signals from SEC filings</span></a></li>
+            <li><a class="index__row" href="#hex"><span class="index__name">AI Hex Agent</span><span class="index__sub">High-performance MCTS in C++</span></a></li>
+            <li><a class="index__row" href="#drawing-accelerator"><span class="index__name">Drawing Accelerator</span><span class="index__sub">Circle-drawing hardware on FPGA</span></a></li>
+          </ol>
+        </nav>
+
+        <div class="records">
+          <!-- GPU Sequence Alignment -->
+          <article class="record pane" id="protein-align" aria-labelledby="protein-align-title">
+            <header class="pane__bar record__bar">
+              <h3 class="record__title" id="protein-align-title">GPU Sequence Alignment</h3>
+              <span class="legend record__type">Final-year project</span>
+            </header>
+            <div class="record__body">
+              <figure class="media">
+                <div class="media__frame media__frame--video">
+                  <video controls preload="none" playsinline width="1280" height="720" poster="assets/img/protein-align-poster.webp">
+                    <source src="assets/video/protein-align.mp4" type="video/mp4">
+                    <track kind="captions" src="assets/video/protein-align.en.vtt" srclang="en" label="English" default>
+                    <a href="assets/video/protein-align.mp4">Download the screencast (MP4)</a>
+                  </video>
+                </div>
+                <figcaption>Project screencast (9&nbsp;min): sequence alignment, GPU architecture and the wavefront approach.</figcaption>
+              </figure>
+              <div class="record__text">
+                <p class="record__subtitle">CUDA-accelerated protein database search</p>
+                <p class="record__desc">Runs thousands of Needleman-Wunsch (global) and Smith-Waterman (local) alignments in parallel on the GPU. Short sequences get one thread each; long ones are split into tiled anti-diagonal wavefronts across thread blocks.</p>
+                <ul class="record__points" role="list">
+                  <li>Automated regression tests check every GPU score against Parasail on each run, alongside Catch2 unit tests.</li>
+                  <li>Benchmarked optimisations (coalesced memory access, inter- vs intra-sequence parallelism, hybrid kernel routing) against a naïve GPU baseline using CUDA events.</li>
+                </ul>
+                <ul class="readouts" role="list" aria-label="Key results">
+                  <li><span class="lcd">5.8×</span> vs Parasail (global)</li>
+                  <li><span class="lcd">8.99</span> GCUPS peak</li>
+                </ul>
+                <dl class="record__props">
+                  <div><dt>Stack</dt><dd class="record__stack">C++17, CUDA, CMake, Catch2, Parasail</dd></div>
+                  <div><dt>When</dt><dd>Sep 2025 – Apr 2026</dd></div>
+                </dl>
+                <div class="record__links">
+                  <a class="btn btn--small btn--primary" href="https://github.com/AlexMote04/protein-align" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> repository for GPU Sequence Alignment (opens in new tab)</span> <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- RiskDrift -->
+          <article class="record pane" id="riskdrift" aria-labelledby="riskdrift-title">
+            <header class="pane__bar record__bar">
+              <h3 class="record__title" id="riskdrift-title">RiskDrift</h3>
+              <span class="legend record__type">Team · Competition</span>
+            </header>
+            <div class="record__body">
+              <figure class="media media--dark">
+                <div class="media__frame">
+                  <img src="assets/img/riskdrift.webp" width="716" height="692" loading="lazy" decoding="async" alt="RiskDrift title slide: Detecting risk regime shifts in SEC 10-K filings before they hit the market. Team Alpha Turing, University of Manchester.">
+                </div>
+                <figcaption>Title slide from our CFA AI Investment Challenge entry (team Alpha Turing).</figcaption>
+              </figure>
+              <div class="record__text">
+                <p class="record__subtitle">Detecting risk-regime shifts in SEC 10-K filings</p>
+                <p class="record__desc">An NLP pipeline that embeds each company’s yearly risk disclosures (10-K Item 1A) with FinBERT and flags unusually large changes in language using per-company cosine-similarity z-scores, validated against 6-month forward returns.</p>
+                <ul class="record__points" role="list">
+                  <li><strong>My part:</strong> the embedding module. Sliding-window mean pooling over 512-token chunks turns filings of any length into one 768-d vector.</li>
+                </ul>
+                <ul class="readouts" role="list" aria-label="Key results">
+                  <li><span class="lcd">Top 5</span> CFA AI Investment Challenge 2026, UK national final</li>
+                </ul>
+                <dl class="record__props">
+                  <div><dt>Stack</dt><dd class="record__stack">Python, FinBERT, Streamlit, SEC EDGAR</dd></div>
+                  <div><dt>Team</dt><dd>4 people · Apr 2026</dd></div>
+                </dl>
+                <div class="record__links">
+                  <a class="btn btn--small btn--primary" href="https://github.com/Alexios99/riskdrift" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> repository for RiskDrift (opens in new tab)</span> <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hex -->
+          <article class="record pane" id="hex" aria-labelledby="hex-title">
+            <header class="pane__bar record__bar">
+              <h3 class="record__title" id="hex-title">High-Performance AI Hex Agent</h3>
+              <span class="legend record__type">Team · Coursework</span>
+            </header>
+            <div class="record__body">
+              <figure class="media media--light">
+                <div class="media__frame">
+                  <img src="assets/img/hex.webp" width="1400" height="558" loading="lazy" decoding="async" alt="Title slide: HexZero-Hybrid, a multi-layered decision engine. Hex agent by Anthony, Alexios, Alex and Joshua.">
+                </div>
+                <figcaption>HexZero-Hybrid, our team’s agent, from the final presentation.</figcaption>
+              </figure>
+              <div class="record__text">
+                <p class="record__subtitle">Monte Carlo Tree Search game agent in C++</p>
+                <p class="record__desc">A competitive agent for the board game Hex, modelled on the champion program MoHex 2.0: Monte Carlo Tree Search with RAVE and pattern-based simulations, running in a C++ engine behind a Python wrapper.</p>
+                <ul class="record__points" role="list">
+                  <li><strong>My part:</strong> optimised the C++ evaluation engine with bitboards, adjacency lookup tables and a compact tree-node layout.</li>
+                  <li>Built a benchmarking framework measuring simulations per second and the win rate of new features against the current agent.</li>
+                </ul>
+                <ul class="readouts" role="list" aria-label="Key results">
+                  <li><span class="lcd">10×</span> simulations per second vs baseline</li>
+                </ul>
+                <dl class="record__props">
+                  <div><dt>Stack</dt><dd class="record__stack">C++17, Python, Docker</dd></div>
+                  <div><dt>Team</dt><dd>4 people · Nov – Dec 2025</dd></div>
+                </dl>
+                <div class="record__links">
+                  <a class="btn btn--small btn--primary" href="https://github.com/a38062an/COMP34111-AI-Games-Hex-43" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> repository for High-Performance AI Hex Agent (opens in new tab)</span> <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Drawing accelerator -->
+          <article class="record pane" id="drawing-accelerator" aria-labelledby="drawing-accelerator-title">
+            <header class="pane__bar record__bar">
+              <h3 class="record__title" id="drawing-accelerator-title">Graphics Drawing Accelerator</h3>
+              <span class="legend record__type">Coursework · SoC Design</span>
+            </header>
+            <div class="record__body">
+              <figure class="media media--light">
+                <div class="media__frame">
+                  <img src="assets/img/drawing-accelerator.webp" width="847" height="840" loading="lazy" decoding="async" alt="FPGA synthesis area treemap of the system-on-chip. The drawing engine, outlined in red, sits inside the peripheral block; the circle-drawing unit within it is outlined in blue.">
+                </div>
+                <figcaption>FPGA area map of the SoC: drawing engine in red, my circle-drawing unit in blue.</figcaption>
+              </figure>
+              <div class="record__text">
+                <p class="record__subtitle">Circle-drawing unit for a 2D graphics accelerator</p>
+                <p class="record__desc">I designed the circle-drawing unit of a 2D hardware accelerator in SystemVerilog. It renders circles straight into a framestore while meeting strict timing and resource constraints.</p>
+                <ul class="record__points" role="list">
+                  <li>Testbench checks RTL output pixel-for-pixel against a high-level C++ model.</li>
+                  <li>Integrated into a larger SoC and synthesised onto an FPGA.</li>
+                </ul>
+                <ul class="readouts" role="list" aria-label="Key results">
+                  <li><span class="lcd">RTL&nbsp;=&nbsp;C++</span> verified against reference model</li>
+                </ul>
+                <dl class="record__props">
+                  <div><dt>Stack</dt><dd class="record__stack">SystemVerilog, C++, Python, FPGA</dd></div>
+                  <div><dt>When</dt><dd>Oct – Dec 2025</dd></div>
+                </dl>
+                <div class="record__links">
+                  <a class="btn btn--small btn--primary" href="https://github.com/AlexMote04/drawing-accelerator" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> repository for Graphics Drawing Accelerator (opens in new tab)</span> <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="site-footer" id="contact">
+    <div class="shell">
+      <section class="contact pane" aria-labelledby="contact-title">
+        <h2 class="pane__bar"><span class="legend" id="contact-title">Contact</span></h2>
+        <div class="contact__body">
+          <p class="contact__lede">Working on autonomy, perception or efficient on-device AI? Let’s talk.</p>
+          <dl class="props props--contact">
+            <div class="props__row">
+              <dt>Email</dt>
+              <dd>
+                <a class="props__value" href="mailto:alex.lewis.mote@gmail.com" translate="no">alex.lewis.mote@gmail.com</a>
+                <button class="key" type="button" data-copy="alex.lewis.mote@gmail.com" aria-label="Copy email address">Copy</button>
+              </dd>
+            </div>
+            <div class="props__row">
+              <dt>GitHub</dt>
+              <dd><a class="props__value" href="https://github.com/AlexMote04" target="_blank" rel="noopener noreferrer" translate="no">@AlexMote04 <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a></dd>
+            </div>
+            <div class="props__row">
+              <dt>LinkedIn</dt>
+              <dd><a class="props__value" href="https://www.linkedin.com/in/alex-mote/" target="_blank" rel="noopener noreferrer" translate="no">in/alex-mote <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in new tab)</span></a></dd>
+            </div>
+            <div class="props__row">
+              <dt>CV</dt>
+              <dd><a class="props__value" href="cv/Alex-Mote-CV.pdf" target="_blank" rel="noopener">Alex-Mote-CV.pdf <span aria-hidden="true">↓</span><span class="visually-hidden"> (opens in new tab)</span></a></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <div class="footer__base">
+        <p>© 2026 Alex Mote</p>
+        <p><a href="privacy.html">Privacy Policy</a> · Design inspired by <a href="https://thavlik.dev" target="_blank" rel="noopener noreferrer">thavlik.dev<span class="visually-hidden"> (opens in new tab)</span></a></p>
+      </div>
+    </div>
+  </footer>
+
+  <p class="toast" role="status" aria-live="polite"></p>
+</body>
+</html>
